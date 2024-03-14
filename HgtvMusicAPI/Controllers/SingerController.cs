@@ -1,5 +1,6 @@
 ﻿using HgtvMusicAPI.Data;
 using HgtvMusicAPI.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System.ComponentModel.Design;
@@ -7,6 +8,7 @@ using System.Linq.Expressions;
 
 namespace HgtvMusicAPI.Controllers
 {
+    [Authorize]
     [Route("api/[controller]")]
     [ApiController]
     public class SingerController : ControllerBase
@@ -15,7 +17,6 @@ namespace HgtvMusicAPI.Controllers
        public SingerController(MyDbContext context) {
             _context = context;
             
-
        }
         // lay danh sach singer
         [HttpGet]
@@ -102,6 +103,7 @@ namespace HgtvMusicAPI.Controllers
                 return StatusCode(500, $"Error deleting item with ID: {id}");
             }
         }
+
 
     }   
 }
