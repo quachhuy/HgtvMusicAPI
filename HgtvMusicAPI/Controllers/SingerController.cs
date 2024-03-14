@@ -80,6 +80,29 @@ namespace HgtvMusicAPI.Controllers
             }
         }
 
+        //Xoa ban ghi voi ID
+        [HttpDelete("id")]
+        public IActionResult Delete(int id)
+        {
+            try
+            {
+                var singer = _context.Singers.FirstOrDefault(e => e.IdSinger == id);
+                if (singer != null)
+                {
+                    _context.Singers.Remove(singer);
+                    _context.SaveChanges();
+                    return Ok($"Deleted item with ID: {id}");
+                }
+                return Ok($"Deleted item with ID: {id}");
+            }
+            catch (Exception ex)
+            {
+                // Xử lý lỗi nếu có
+                Console.WriteLine($"Error deleting item with ID: {id}. Error message: {ex.Message}");
+                return StatusCode(500, $"Error deleting item with ID: {id}");
+            }
+        }
+
     }   
 }
 
