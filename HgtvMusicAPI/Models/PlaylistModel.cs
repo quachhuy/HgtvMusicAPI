@@ -1,6 +1,6 @@
 ﻿namespace HgtvMusicAPI.Models
 {
-    public class User
+    public class PlaylistModel
     {
 
     }

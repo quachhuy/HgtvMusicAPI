@@ -1,7 +1,6 @@
 ﻿namespace HgtvMusicAPI.Models
 {
-    public class Album
+    public class AdminModel
     {
-
     }
 }

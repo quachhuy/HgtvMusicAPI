@@ -17,12 +17,14 @@ namespace HgtvMusicAPI.Controllers
             
 
        }
+        // lay danh sach singer
         [HttpGet]
         public IActionResult GetAll() {
             var Singers = _context.Singers.ToList();
             return Ok(Singers);
 
         }
+        // lay qua ID
 
         [HttpGet("id")]
         public IActionResult GetById(int id) {
@@ -36,6 +38,8 @@ namespace HgtvMusicAPI.Controllers
                 return Ok(Singers);
             }
         }
+
+        // tao moi singer
         [HttpPost]
         public IActionResult CreateSinger(SingerModel model)
         {
@@ -55,8 +59,11 @@ namespace HgtvMusicAPI.Controllers
             }
             
         }
+
+
+        // chinh sua singer.
         [HttpPut("id")]
-        public IActionResult UpdateSingerById(int id, Singer singer)
+        public IActionResult UpdateSingerById(int id, SingerModel model)
         {
             var si = _context.Singers.SingleOrDefault(si => si.IdSinger == id);
             if (si == null)
@@ -65,9 +72,9 @@ namespace HgtvMusicAPI.Controllers
             }
             else
             {   
-                si.NameSinger = singer.NameSinger;
-                si.Follower = singer.Follower;
-                si.Path_Img = singer.Path_Img;
+                si.NameSinger = model.NameSinger;
+                si.Follower = model.Follower;
+                si.Path_Img = model.Path_Img;
                 _context.SaveChanges();
                 return NoContent();
             }
