@@ -1,6 +1,7 @@
 ﻿namespace HgtvMusicAPI.Models
 {
-    public class Category
+    public class AlbumModel
     {
+
     }
 }
