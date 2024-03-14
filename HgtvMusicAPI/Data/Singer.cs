@@ -15,6 +15,7 @@ namespace HgtvMusicAPI.Data
         public string Path_Img { get; set; }
 
         public virtual ICollection<Album> Albums { get; set; } 
+
         public virtual ICollection<Song> Songs { get; set; }
 
     }
