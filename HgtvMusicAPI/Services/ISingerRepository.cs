@@ -9,7 +9,7 @@ namespace HgtvMusicAPI.Services
 
         SingerVM CreateSinger(SingerModel model);
 
-        void Update(SingerVM singerVM);
+        void UpdateSingerById(SingerVM singerVM);
         void Delete(int id);   
 
     }
