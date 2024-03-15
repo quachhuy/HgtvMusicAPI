@@ -10,7 +10,8 @@ namespace HgtvMusicAPI.Data
         public int IdAlbum { get; set; }
         [Required]
         public string? NameAlbum { get; set; }
-        public DateOnly ReleaseYear { get; set; }   
+        public DateOnly ReleaseYear { get; set; }
+        [Range(0, int.MaxValue)]
         public int Quantity { get; set; }
         public string? Path_Img { get; set; }
         public int? IdSinger { get; set; }

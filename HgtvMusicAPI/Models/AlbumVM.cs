@@ -2,16 +2,12 @@
 
 namespace HgtvMusicAPI.Models
 {
-    public class AlbumModel
+    public class AlbumVM
     {
-
-        [Required]
-        [MaxLength(50)]
+        public int IdAlbum { get; set; }
         public string? NameAlbum { get; set; }
         public DateOnly ReleaseYear { get; set; }
-        [Range(0, int.MaxValue)]
         public int Quantity { get; set; }
         public string? Path_Img { get; set; }
-
     }
 }

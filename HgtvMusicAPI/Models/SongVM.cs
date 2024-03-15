@@ -2,8 +2,9 @@
 
 namespace HgtvMusicAPI.Models
 {
-    public class SongModel
+    public class SongVM
     {
+        public int IdSong { get; set; }
         public string NameSong { get; set; }
         public string? Path_Img { get; set; }
     }

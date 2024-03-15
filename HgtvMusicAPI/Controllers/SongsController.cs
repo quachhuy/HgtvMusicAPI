@@ -1,22 +1,22 @@
-﻿using HgtvMusicAPI.Models;
+﻿using HgtvMusicAPI.Data;
+using HgtvMusicAPI.Models;
 using HgtvMusicAPI.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
 
 namespace HgtvMusicAPI.Controllers
 {
     [Authorize]
     [Route("api/[controller]")]
     [ApiController]
-    public class SingersController : ControllerBase
+    public class SongsController : ControllerBase
     {
-        private readonly ISingerRepository _singerRepository;
-    
-        public SingersController(ISingerRepository singerRepository)
+        private readonly ISongRepository _songRepository;
+
+        public SongsController(ISongRepository songRepository)
         {
-            _singerRepository = singerRepository;
+            _songRepository = songRepository;
         }
         [HttpGet]
         public IActionResult GetAll()
@@ -24,7 +24,7 @@ namespace HgtvMusicAPI.Controllers
             try
             {
 
-                return Ok(_singerRepository.GetAll());
+                return Ok(_songRepository.GetAll());
             }
             catch
             {
@@ -34,18 +34,19 @@ namespace HgtvMusicAPI.Controllers
         [HttpGet("id")]
         public IActionResult GetById(int id)
         {
-          
+
             try
             {
-                var data = _singerRepository.GetById(id);
-                if(data != null) {
+                var data = _songRepository.GetById(id);
+                if (data != null)
+                {
                     return Ok(data);
                 }
                 else
                 {
                     return NotFound();
                 }
-                
+
             }
             catch
             {
@@ -53,15 +54,15 @@ namespace HgtvMusicAPI.Controllers
             }
         }
         [HttpPut("id")]
-        public IActionResult UpdateSingerById(int id, SingerVM model)
+        public IActionResult UpdateSong(int id, SongVM model)
         {
-            if(id != model.IdSinger)
+            if (id != model.IdSong)
             {
                 return BadRequest();
             }
             try
             {
-                _singerRepository.UpdateSingerById(model);
+                _songRepository.UpdateSong(model);
                 return NoContent();
 
             }
@@ -75,7 +76,7 @@ namespace HgtvMusicAPI.Controllers
         {
             try
             {
-                _singerRepository.Delete(id);
+                _songRepository.Delete(id);
                 return Ok();
 
             }
@@ -85,12 +86,12 @@ namespace HgtvMusicAPI.Controllers
             }
         }
         [HttpPost]
-        public IActionResult CreateSinger(SingerModel model)
+        public IActionResult CreateSong(SongModel model)
         {
             try
             {
-                
-                return Ok(_singerRepository.CreateSinger(model));
+
+                return Ok(_songRepository.CreateSong(model));
 
             }
             catch
