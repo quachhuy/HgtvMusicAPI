@@ -14,6 +14,7 @@ builder.Services.AddDbContext<MyDbContext>(x => x.UseSqlServer(builder.Configura
 builder.Services.AddControllers();
 //repository
 builder.Services.AddScoped<ISingerRepository , SingerRepository>();
+builder.Services.AddScoped<ISongRepository, SongRepository>();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
