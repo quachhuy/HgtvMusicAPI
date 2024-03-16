@@ -1,117 +1,215 @@
 <template>
-    <div id="container">
-      <div id="index">
-        <div id="logo">
-            <img src="@/assets/image 9.png" alt="Icon" class="">
-            <h1>hgtv</h1>
-            <h3>music</h3>
-        </div>
-        <div id="type">
-          <div id="user">
-            <img src="@/assets/image 13.png" alt="Icon User" class="icon">
-            <router-link to="/manage" class="router-link" id="user-manager">User Manager</router-link>
-          </div>
-          <div id="content">
-            <img src="@/assets/image 16.png" alt="Icon Content" class="icon">
-            <router-link to="/content" class="router-link" id="content-manager">Content Manager</router-link>
-            <ul v-if="showDropdown">
-              <li><router-link to="/content/song" class="router-link" >Song</router-link></li>
-              <li><router-link to="/content/playlist" class="router-link" >Playlist</router-link></li>
-              <li><router-link to="/content/album" class="router-link" >Album</router-link></li>
-            </ul>
-          </div>
-          <div id="logout">
-            <img src="@/assets/image 18.png" alt="Icon LogOut" class="icon">
-            <router-link to="/content" id="logout">User Manager</router-link>
-          </div>
-          
-        </div>
+  <div id="container">
+    <div id="index">
+      <div id="logo">
+          <img src="@/assets/image 9.png" alt="Icon" class="">
+          <h1>hgtv</h1>
+          <h3>music</h3>
       </div>
-      <div id="table">
-
+      <div id="type">
+        <div id="user">
+          <img src="@/assets/image 13.png" alt="Icon User" class="icon">
+          <router-link to="/manage" class="router-link" id="user-manager">User Manager</router-link>
+        </div>
+        <div id="content">
+          <img src="@/assets/image 16.png" alt="Icon Content" class="icon">
+          <router-link to="/manage" class="router-link" id="content-manager">Content Manager</router-link>
+          <img src="@/assets/image 17.png" alt="Icon Dropdown" class="icondd">
+        </div>
+        <div id="song">
+          <img src="@/assets/image 12.png" alt="Icon Song" class="icons">
+          <router-link to="/manage" class="router-link" id="song-m">Song</router-link>
+        </div>
+        <div id="playlist">
+          <img src="@/assets/image 14.png" alt="Icon PlayList" class="iconp">
+          <router-link to="/manage" class="router-link" id="playlist-m">Playlist</router-link>
+        </div>
+        <div id="album">
+          <img src="@/assets/image 15.png" alt="Icon Album" class="icona">
+          <router-link to="/manage" class="router-link" id="album-m">Album</router-link>
+        </div>
+        <div id="logout">
+          <img src="@/assets/image 18.png" alt="Icon LogOut" class="icono">
+          <router-link to="/manage" class="router-link" id="logout-m">Log Out</router-link>
+        </div>
       </div>
     </div>
+    <div id="dashboard">
+      <div class="header">
+        <input type="text" v-model="search" placeholder="Search...">
+        <img src="avatar.jpg" alt="Avatar" class="avatar">
+        <div class="welcome">
+          <p>Welcome, Giao !</p>
+          <p>View report about the user manager</p>
+        </div>
+        <button @click="createUser" class="create-user">Create New User</button>
+      </div>
+      <table class="user-table">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr v-for="(user, index) in users" :key="index">
+            <td>{{ user.id }}</td>
+            <td>{{ user.username }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>
+              <button @click="editUser(user.id)">Edit</button>
+              <button @click="deleteUser(user.id)">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
 </template>
-  
+
 <script>
-  export default {
+export default {
   data() {
-    
+    return {
+      search: '',
+      users: [
+        { id: 1, username: 'JohnDoe', email: 'john@example.com', phone: '123-456-7890' },
+        { id: 2, username: 'JaneDoe', email: 'jane@example.com', phone: '987-654-3210' },
+        // Add more user data as needed
+      ]
+    };
   },
   methods: {
-    
+    createUser() {
+      // Logic for creating a new user
+      console.log('Creating new user...');
+    },
+    editUser(userId) {
+      // Logic for editing a user
+      console.log('Editing user with ID:', userId);
+    },
+    deleteUser(userId) {
+      // Logic for deleting a user
+      console.log('Deleting user with ID:', userId);
+    }
   }
 }
 </script>
-  
+
 <style >
-    #container{
-      display: grid;
-      grid-template-columns: 1fr 4fr;
-    }
+  #container{
+    display: grid;
+    grid-template-columns: 1fr 4fr;
+  }
 
-    #logo{
-      margin-bottom: 30%;
-    }
+  #logo{
+    margin-bottom: 30%;
+  }
+  
+  #logo h1{
+    font-family: 'Inconsolata', monospace;
+    font-weight: bold !important;
+    font-size: 80px;
+    margin: 0 0 0 20%;
+  }
+  
+  #logo img{
+    padding: 5% 0 0 5%;
+  }
+
+  #logo h3{
+    float: right;
+    padding-right: 25%;
+    font-size: 23px;
+    margin: 0;
+    font-family: 'Inter', sans-serif; 
+    font-weight: 300;
+  }
+
+  #type{
+    padding-top: 13%;
+  }
+
+  #user, 
+  #content{
+    width: 260px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 10%;
+  }
+
+  #user{
+    background: #d9d9d98a;
+  }
+
+  #content .icon{
+    padding-right: 7px;
+  }
+
+  .icondd{
+    padding-left: 5px;
+  }
+
+  .icon, .icons, .iconp, .icona, .icono{
+    width: 35px; 
+    height: auto; 
+  }
+
+  .icons, .iconp, .icona, .icono{
+    padding-right: 7%;
+  }
+
+  #user-manager{
+    padding-left: 20px;
+    text-decoration-line: none;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    color:black;
     
-    #logo h1{
-      font-family: 'Inconsolata', monospace;
-      font-weight: bold !important;
-      font-size: 80px;
-      margin: 0 0 0 20%;
-    }
-    
-    #logo img{
-      padding: 5% 0 0 5%;
-    }
+  }
 
-    #logo h3{
-      float: right;
-      padding-right: 25%;
-      font-size: 23px;
-      margin: 0;
-      font-family: 'Inter', sans-serif; 
-      font-weight: 300;
-    }
+  #song, 
+  #playlist,
+  #album{
+    width: 260px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+    margin-bottom: 7%;
+  }
+  
+  #logout{
+    margin-top: 15%;
+    width: 200px;
+    height: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 
-    #user{
-      width: 260px;
-      height: 50px;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      border-radius: 5px;
-      background: #d9d9d98a;
-    }
+  .router-link {
+    text-decoration: none;
+    color: black;
+    font-size: 20px;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+  }
 
-
-    .icon{
-      width: 35px; 
-      height: auto; 
-    }
-
-    #user-manager{
-      padding-left: 20px;
-      text-decoration-line: none;
-      font-size: 20px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-      color:black;
-      
-    }
-    
-    .router-link {
-      text-decoration: none;
-      color: black;
-      font-size: 20px;
-      font-family: 'Inter', sans-serif;
-      font-weight: 500;
-    }
-
-
-    #table{
-      background-color: #331F51;
-    }
+  #dashboard{
+    background-color: #331f51bf;
+    margin: 2% 2% 0 0;
+    height: 750px;
+    border-radius: 65px;
+  }
 
 </style>
-  
