@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signin.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+
+    <title>Document</title>
+</head>
+    <div id="SignIn">
+        <div id= "bg1">
+            <h1>Sign In</h1>
+            <div id="username">
+            <div class="input-group">
+                <img src="img/iconUser.png" alt="Icon Name" class="input-icon">
+                <input type="text" v-model="username" @focus="clearUsername" placeholder="Username" class="input-field">
+            </div>
+            </div>
+            
+            <div id="password">
+            <div class="input-group">
+                <img src="img/iconPass.png" alt="Icon Pass" class="input-icon">
+                <input type="password" v-model="password" placeholder="Password">
+            </div>
+            <p class="forgot-password">Forget your password?</p>
+            </div>
+            <button class="SIbutton" @click="signIn">SIGN IN</button>
+        </div>
+        <div id="bg2">
+        <img src="img/image 6.png" alt="Icon" class="music">
+        <h1>Welcome to HGTV!</h1>
+        <p class="details">Please enter your information to start listening to music with us.</p>
+        <button class="SUbutton"> SIGN UP</button>
+        </div>
+    </div>
+<body>
+    <script src="signin.js"></script>
+</body>
+</html>
+
+
+  

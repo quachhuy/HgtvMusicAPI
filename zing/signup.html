@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="signup.css">
+    <title>Document</title>
+</head>
+    <div id="SignUp">
+        <div id= "bg1">
+            <h1>Sign Up</h1>
+            <div id="username">
+                <div class="input-group">
+                    <img src="img/iconUser.png" alt="Icon Name" class="input-icon">
+                    <input type="text" v-model="username" @focus="clearUsername" placeholder="Username" class="input-field">
+                </div>
+            </div>
+            
+            <div id="password">
+                <div class="input-group">
+                    <img src="img/iconPass.png" alt="Icon Pass" class="input-icon">
+                    <input type="password" v-model="password" placeholder="Password">
+                </div>
+            </div>
+            <div id="email">
+                <div class="input-group">
+                    <img src="img/image 7.png" alt="Icon Email" class="input-icon">
+                    <input type="email" v-model="email" placeholder="Email" pattern="[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$" title="Please enter a valid email address" class="input-field">
+                </div>
+            </div>
+            <div id="phone">
+                <div class="input-group">
+                    <img src="img/image 8.png" alt="Icon Phone" class="input-icon">
+                    <input type="tel" v-model="phone" placeholder="Phone" pattern="[0-9]{10}" title="Please enter a 10-digit phone number" class="input-field">
+                </div>
+            </div>
+            <button class="SUbutton" @click="signUp">BACK</button>
+        </div>
+        <div id="bg2">
+            <img src="img/image 6.png" alt="Icon" class="music">
+            <h1>Welcome to HGTV!</h1>
+            <p class="details">Already have an account?</p>
+            <button class="SIbutton" @click="signIn">SIGN IN</button>
+        </div>
+    </div>
+<body>
+    <script src="signin.js"></script>
+</body>
+</html>
