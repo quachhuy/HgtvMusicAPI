@@ -37,7 +37,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("Admins");
+                    b.ToTable("Admins", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Album", b =>
@@ -68,7 +68,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasIndex("IdSinger");
 
-                    b.ToTable("Album");
+                    b.ToTable("Album", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Category", b =>
@@ -88,7 +88,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasKey("IdCategory");
 
-                    b.ToTable("Category");
+                    b.ToTable("Category", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Playlist", b =>
@@ -114,7 +114,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasIndex("IdUser");
 
-                    b.ToTable("Playlist");
+                    b.ToTable("Playlist", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Singer", b =>
@@ -139,7 +139,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasKey("IdSinger");
 
-                    b.ToTable("Singer");
+                    b.ToTable("Singer", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Song", b =>
@@ -175,7 +175,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasIndex("IdSinger");
 
-                    b.ToTable("Song");
+                    b.ToTable("Song", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.User", b =>
@@ -207,7 +207,7 @@ namespace HgtvMusicAPI.Migrations
 
                     b.HasKey("IdUser");
 
-                    b.ToTable("Users");
+                    b.ToTable("Users", (string)null);
                 });
 
             modelBuilder.Entity("HgtvMusicAPI.Data.Admin", b =>
