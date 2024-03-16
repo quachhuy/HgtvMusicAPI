@@ -72,7 +72,7 @@ namespace HgtvMusicAPI.Services
 
         public void UpdateAlbum(AlbumVM AlbumVM)
         {
-            var song = _context.Albums.SingleOrDefault(si => si.IdAlbum == AlbumVM.IdAlbum); // chu y
+            var album = _context.Albums.SingleOrDefault(si => si.IdAlbum == AlbumVM.IdAlbum); // chu y
             AlbumVM.NameAlbum   = AlbumVM.NameAlbum;
             AlbumVM.ReleaseYear = AlbumVM.ReleaseYear;
             AlbumVM.Quantity    = AlbumVM.Quantity;

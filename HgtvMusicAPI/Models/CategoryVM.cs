@@ -2,9 +2,9 @@
 
 namespace HgtvMusicAPI.Models
 {
-    public class CategoryModel
+    public class CategoryVM
     {
-        [Required]
+        public int IdCategory { get; set; }
         public string? NameCategory { get; set; }
         public string? Path_Img { get; set; }
 
