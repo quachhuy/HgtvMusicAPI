@@ -5,7 +5,6 @@ import SignUp from './components/SignUp.vue';
 import ManageComponent from './components/ManageComponent.vue';
 import { createRouter, createWebHistory } from 'vue-router';
 
-
 const app = createApp(App);
 
 const router = createRouter({

@@ -36,15 +36,18 @@
     </div>
     <div id="dashboard">
       <div class="header">
-        <input type="text" v-model="search" placeholder="Search...">
-        <img src="avatar.jpg" alt="Avatar" class="avatar">
-        <div class="welcome">
-          <p>Welcome, Giao !</p>
-          <p>View report about the user manager</p>
+        <div class="search">
+          <input type="search" v-model="search" placeholder="Search" @input="searchUser" @keydown.enter="handleSearchEnter">
+          <img src="@/assets/image 21.png" alt="Avatar" class="avatar">
         </div>
-        <button @click="createUser" class="create-user">Create New User</button>
+        <div class="welcome">
+          <p class="welcome1">Welcome, Giao !</p>
+          <p class="view">View report about the user manager</p>
+        </div>
+        <button @click="createUser" class="create-user"> + Create New User</button>
       </div>
-      <table class="user-table">
+      <div class="table-manage">
+        <table class="user-table">
         <thead>
           <tr>
             <th>ID</th>
@@ -67,6 +70,7 @@
           </tr>
         </tbody>
       </table>
+      </div>
     </div>
   </div>
 </template>
@@ -79,22 +83,26 @@ export default {
       users: [
         { id: 1, username: 'JohnDoe', email: 'john@example.com', phone: '123-456-7890' },
         { id: 2, username: 'JaneDoe', email: 'jane@example.com', phone: '987-654-3210' },
-        // Add more user data as needed
       ]
     };
   },
   methods: {
+    searchUser() {
+      console.log('Searching for:', this.search);
+    },
     createUser() {
-      // Logic for creating a new user
       console.log('Creating new user...');
     },
     editUser(userId) {
-      // Logic for editing a user
       console.log('Editing user with ID:', userId);
     },
     deleteUser(userId) {
-      // Logic for deleting a user
       console.log('Deleting user with ID:', userId);
+    },
+    handleSearchEnter(event) {
+      if (event.key === 'Enter') {
+        this.searchUser();
+      }
     }
   }
 }
@@ -157,7 +165,7 @@ export default {
     padding-left: 5px;
   }
 
-  .icon, .icons, .iconp, .icona, .icono{
+  .icon, .icons, .iconp, .icona, .icono, .iconse{
     width: 35px; 
     height: auto; 
   }
@@ -212,4 +220,69 @@ export default {
     border-radius: 65px;
   }
 
+  .search{
+    float: right;
+    margin: 5% 5% 0 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .avatar{
+    width:45px;
+    height: auto;
+    padding-left: 3%;
+  }
+
+  input[type="search"]{
+    border-radius: 25px;
+    width: 200px;
+    height: 37px; 
+    font-size: 18px;
+    background-color: #E3E2E2;
+    border: none;
+    padding-left: 50px;
+    font-family: Inter,sans-serif; 
+    font-weight: lighter;
+  }
+
+  .welcome{
+    padding: 10% 0 0 7%;
+  }
+
+  .welcome1{
+    font-family: 'Kodchasan', sans-serif;
+    font-weight: bold !important;
+    font-size: 45px;
+    margin-bottom: 0;
+  }
+
+  .view, .create-user{
+    font-family: Inter,sans-serif; 
+    font-weight:400;
+    font-size: 15px;
+  }
+
+  .create-user{
+    width: 220px;
+    height: 40px; 
+    font-size: 15px;
+    border: none;
+    float:right;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease; 
+    background-color: #E3E2E2;
+    color: #000000;
+    margin-right: 10%;
+
+  }
+
+  .create-user:hover {
+    background-color: #cbc8c8; 
+  }
+
+  .table-manage{
+    padding-top: 10%;
+  }
 </style>

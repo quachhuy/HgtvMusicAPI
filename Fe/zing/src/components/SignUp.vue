@@ -47,6 +47,8 @@
           showPassword: false,
           email: '',
           phone: '',
+          showSuccessMessage: false,
+          users: []
         };
       },
       methods: {
@@ -57,27 +59,46 @@
             this.$router.push('/');
         },
         signUp() {
-            // Kiểm tra dữ liệu email và số điện thoại
+            if (!this.username.trim()) {
+              alert('Please enter username.');
+              return;
+            }
+            if (!this.password.trim()) {
+              alert('Please enter password.');
+              return;
+            } else if (this.password.length < 6 || this.password.length > 24) {
+              alert('Password must be between 6 and 24 characters.');
+              return;
+            }
+
             if (!this.validateEmail(this.email)) {
-                alert('Please enter a valid email address.');
-                return;
+              alert('Please enter a valid email address.');
+              return;
             }
-            if (!this.validatePhone(this.phone)) {
-                alert('Please enter a valid phone number.');
-                return;
+            if (/[^\d]/.test(this.phone)) {
+              alert('Phone number should contain only digits.');
+              return;
             }
-            // Đoạn mã xử lý khi người dùng click vào nút Sign Up
+            if (this.phone.length !== 10) {
+              alert('Phone number should be 10 digits.');
+              return;
+            }
+            if (this.isPhoneRegistered(this.phone)) {
+              alert('This phone number has already been registered. Please use a different phone number.');
+              return;
+            }
+            this.showSuccessMessage = true;
+            alert('Sign up successful! Welcome to HGTV!');
+            this.$router.push('/');
             },
             validateEmail(email) {
-            // Kiểm tra định dạng email
             const regex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
             return regex.test(email);
             },
-            validatePhone(phone) {
-            // Kiểm tra định dạng số điện thoại (10 chữ số)
-            const regex = /^\d{10}$/;
-            return regex.test(phone);
-            }
+            isPhoneRegistered(phone) {
+            return this.users.some(user => user.phone === phone);
+    }
+          
   }
     }
 
@@ -235,4 +256,8 @@
       width: 400px;
   
       }
+
+
+
+
   </style>
