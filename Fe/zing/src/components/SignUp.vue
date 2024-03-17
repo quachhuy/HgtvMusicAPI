@@ -62,6 +62,12 @@
             if (!this.username.trim()) {
               alert('Please enter username.');
               return;
+            }else if (this.username.length < 6 || this.username.length > 24) {
+              alert('Username must be between 6 and 24 characters.');
+              return;
+            }else if (/\s/.test(this.username)) {
+              alert('Username cannot contain spaces.');
+              return;
             }
             if (!this.password.trim()) {
               alert('Please enter password.');
